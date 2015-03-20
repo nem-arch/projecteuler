@@ -31,7 +31,7 @@ factorize(N,FactorsList) ->
 % to validate that all factors have been found
 factorscheck([]) -> 1;
 factorscheck([H|T]) ->
-	H * check(T).
+	H * factorscheck(T).
 
 run() ->
 	factorscheck(factorize(600851475143, primelist(10000))).
