@@ -19,7 +19,6 @@ primecheck(X,M) ->
 	   true -> primecheck(X,M-1)
 	end.
 
-% generate primenumbers up to M
 % i guess there's a better way to do this
 % N: current number checked for prime
 % M: number of primes found
