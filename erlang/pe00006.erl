@@ -21,4 +21,4 @@ sqsum(N,S) ->
 	sqsum(N-1,S+square(N)).
 
 run() ->
-	square(lists:sum(lists:seq(1,100)))-sqsum(100,0).
+	square(50*101)-sqsum(100,0).
