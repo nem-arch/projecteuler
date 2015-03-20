@@ -7,10 +7,10 @@
 
 -export([run/0]).
 
-% if guard is catching we found a prime (because we never got a remainder)
+% if guard is catching we found a prime (because we always got a remainder)
 primecheck(_,M) when M < 2 -> true;
-% if we get remainder, return false
-% else (no remainder) recurse to next (lower) divisor M-1
+% if we dont get remainder, return false
+% else (remainder) recurse to next (lower) divisor M-1
 % NOTE: initially divisor M only needs to be sqrt(X)
 % becasue if we find a non-prime factor, then X can be written as X = P*Q
 % with P or Q < sqrt(X)
