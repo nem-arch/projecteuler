@@ -23,9 +23,9 @@ primecheck(X,M) ->
 % N: current number checked for prime
 % M: number of primes found
 % Found: if true, last number was a prime
+prime(N, M, Found) when M+1 =:= 10001, Found -> N-1;
 prime(N, M, Found) ->
 	if
-		Found, M+1 =:= 10001 -> N-1;
 		Found -> prime(N+1, M+1, primecheck(N,trunc(math:sqrt(N))));
 		true -> prime(N+1, M, primecheck(N,trunc(math:sqrt(N))))
 	end.
