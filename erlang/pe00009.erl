@@ -10,5 +10,15 @@
 -module(pe00009).
 -export([run/0]).
 
+% the divisions are bad because they make the constraints useless (needs to be integer)
+% so we trunc them. not sure whether there are some possible errors in this.
+% NOTE: this method returns two possible (equal) solutions due to rounding.
+% using trunc or round seems to make no difference.
+% also rounding/truncing only one of the values makes no difference.
+% both values must be rounded. else the constraints are not met (empty solution).
+a(B) -> trunc(1000*(B-500)/(B-1000)).
+c(B) -> trunc((B*B-1000*B+500000)/(1000-B)).
+square(N) -> N*N.
+
 run() ->
-	[ A*B*C || C <- lists:seq(1,999), B <- lists:seq(1,C), A <- lists:seq(1,B), A + B + C =:= 1000, A*A + B*B =:= C*C ].
+	[ a(B)*B*c(B) || B <- lists:seq(1,999), a(B) + B + c(B) =:= 1000, square(a(B)) + square(B) =:= square(c(B)), a(B) > 0, c(B) > 0 ].
